@@ -5,58 +5,66 @@ import gsap from 'gsap';
 
 const TestimonialSection = () => {
 
-  const vdRef = useRef([]);
+const vdRef = useRef([]);
+
+  useGSAP(() => {
+    gsap.set(".testimonials-section", {
+      marginTop: "-140vh",
+    });
+
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: ".testimonials-section",
+        start: "top bottom",
+        end: "200% top",
+        scrub: true,
+      },
+    });
+
+    tl.to(".testimonials-section .first-title", {
+      xPercent: 70,
+    })
+      .to(
+        ".testimonials-section .sec-title",
+        {
+          xPercent: 25,
+        },
+        "<"
+      )
+      .to(
+        ".testimonials-section .third-title",
+        {
+          xPercent: -50,
+        },
+        "<"
+      );
+
+    const pinTl = gsap.timeline({
+      scrollTrigger: {
+        trigger: ".testimonials-section",
+        start: "10% top",
+        end: "200% top",
+        scrub: 1.5,
+        pin: true,
+      },
+    });
+
+    pinTl.from(".vd-card", {
+      yPercent: 150,
+      stagger: 0.2,
+      ease: "power1.inOut",
+    });
+  });
 
   const handlePlay = (index) => {
     const video = vdRef.current[index];
     video.play();
-  }
-  
+  };
+
   const handlePause = (index) => {
     const video = vdRef.current[index];
     video.pause();
-  }
-
-  useGSAP(()=>{
-    // What this section mean? .set
-    gsap.set(".testimonials-section",{
-      marginTop:"-140vh"
-    })
-
-    const timeline = gsap.timeline({
-      scrollTrigger:{
-        trigger:".testimonials-section",
-        start:"top bottom",
-        end:"200% top",
-        scrub:true,
-      }
-    })
-
-    timeline.to('.testimonials-section .first-title',{
-        xPercent:70,
-    }).to('.testimonials-section .sec-title',{
-      xPercent:25,
-    },"<").to('.testimonials-section .third-title',{
-      xPercent:-50,
-    },"<")
-    // [ overlapping idea ] we add < to run both of these parts simultaneously
-  })
-
-  const pinTimeline = gsap.timeline({
-    scrollTrigger:{
-      trigger:".testimonials-section",
-      start:"10% top",
-      end:"bottom top",
-      scrub:1.2,
-      pin:true,
-    }
-  })
-
-  pinTimeline.from(".vd-card",{
-      yPercent:200,
-      stagger:0.02,
-      ease:"power1.inOut",
-  });
+  };
 
   return (
     <section className="testimonials-section">
@@ -70,7 +78,7 @@ const TestimonialSection = () => {
         {cards.map((card, index) => (
           <div
             key={index}
-            className={`vd-card transform ${card.translation} ${card.rotation}`}
+            className={`vd-card ${card.translation} ${card.rotation}`}
             onMouseEnter={() => handlePlay(index)}
             onMouseLeave={() => handlePause(index)}
           >
@@ -86,7 +94,7 @@ const TestimonialSection = () => {
         ))}
       </div>
     </section>
-  )
+  );
 }
 
 export default TestimonialSection
