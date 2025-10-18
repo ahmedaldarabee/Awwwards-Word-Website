@@ -1,6 +1,6 @@
+@import url("https://fonts.googleapis.com/css2?family=Antonio:wght@100..700&display=swap");
 @import "tailwindcss";
 
-@import url("https://fonts.googleapis.com/css2?family=Antonio:wght@100..700&display=swap");
 
 @font-face {
     font-family: "ProximaNova, sans-serif";
@@ -25,16 +25,15 @@
 
 html,
 body {
+    font-family: "Antonio", sans-serif;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     background-color: #faeade;
     color: #523122;
-    font-family: "Antonio", sans-serif;
     overflow-x: hidden;
     scroll-behavior: smooth;
     scrollbar-width: none; /* Firefox */
-    -ms-overflow-style: none; /* IE 10+ */
 }
 
 body::-webkit-scrollbar {
@@ -104,12 +103,8 @@ body::-webkit-scrollbar {
       }
 
       h1:last-of-type {
-        @apply 2xl:max-w-7xl md:max-w-4xl max-w-xs text-center  text-[#faeade10];
+        @apply md:max-w-4xl max-w-xs text-center  text-[#faeade10];
       }
-    }
-
-    p {
-      @apply text-center font-paragraph;
     }
 
     h1,
@@ -118,7 +113,7 @@ body::-webkit-scrollbar {
     }
 
     .msg-text-scroll {
-      @apply rotate-[3deg] 2xl:translate-y-5 -translate-y-5 absolute z-10 border-[.5vw] border-[#7f3b2d];
+      @apply rotate-[-3deg] -translate-y-5 md:-translate-y-1 absolute z-10 border-[.5vw] border-[#7f3b2d];
     }
   }
 
@@ -234,15 +229,15 @@ body::-webkit-scrollbar {
     @apply bg-milk relative w-full h-[120dvh];
 
     .pin-box {
-      @apply flex items-center justify-center w-full ps-52 absolute 2xl:bottom-32 bottom-[50vh];
+      @apply flex items-center justify-center w-full ps-52 absolute 2xl:bottom-32 bottom-[20vh];
 
       .vd-card {
-        @apply md:w-96 w-80 flex-none md:rounded-[2vw] rounded-3xl -ms-44 overflow-hidden 2xl:relative absolute border-[.5vw] border-milk;
+        @apply w-80 flex-none md:rounded-[2vw] rounded-3xl -ms-44 overflow-hidden 2xl:relative absolute top-50 border-[.5vw] border-milk;
       }
     }
 
     h1 {
-      @apply uppercase text-[20.5vw] leading-[105%] tracking-[-.4vw] ml-[2vw] font-bold;
+      @apply uppercase text-[15.5vw] leading-[105%] tracking-[-.4vw] ml-[2vw] font-bold;
     }
   }
 
